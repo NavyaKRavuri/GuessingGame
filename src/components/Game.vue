@@ -16,9 +16,9 @@
         
         <h3>Remaining Chances: {{ chances }}</h3> 
 
-        <el-form :model="guessForm" :rules="rules" ref="guessForm"  class="demo-ruleForm">
+        <el-form :model="guessForm" :rules="rules" ref="guessForm">
             <el-form-item  id="input" prop="guess">
-                <el-input v-model.number="guessForm.guess" placeholder="Enter a guess"></el-input>
+                <el-input v-model.number="guessForm.guess" placeholder="Enter a guess"  @keypress.enter.native.prevent></el-input>
             </el-form-item>
              <el-form-item style="margin-top: 20px">
                 <el-button type="primary" @click="submitForm">Guess it</el-button>
@@ -62,7 +62,9 @@ export default {
     },
 
     methods: {
-        submitForm() {
+        submitForm(e) {
+            e.preventDefault();
+            
             if(this.chances === 0) {
                 this.createMessage(`<h2><strong>You are out of chances.<br /> Start a new Game!</strong></h2>`);
 
