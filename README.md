@@ -1,5 +1,10 @@
 # guessing_game
 
+## Prerequisits
+```
+Must have Node installed in local machine
+```
+
 ## Project setup
 ```
 npm install
